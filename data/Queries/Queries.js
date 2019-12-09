@@ -33,9 +33,19 @@ const EditAccount= async (id,changes)=>{
     return getById(id)
 }
 
+const DeleteAccount = (id)=>{
+   return knex('accounts')
+    .where("id", id)
+    .del()
+
+
+    
+}
+
 module.exports = {
     getAll,
     getById,
     AddAccount,
-    EditAccount
+    EditAccount,
+    DeleteAccount
 }
