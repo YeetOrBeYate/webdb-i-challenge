@@ -5,7 +5,7 @@
   "scripts": {
     "server": "nodemon index.js",
     "db:seed" : "knex seed:run",
-    "db:migrate": "knex migration:run"
+    "db:migrate": "knex migrate:latest"
   },
   "repository": "https://github.com/LambdaSchool/webdb-i-challenge",
   "dependencies": {
