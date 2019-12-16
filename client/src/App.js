@@ -24,8 +24,11 @@ function App() {
 
   return (
     <div className="App">
-      {console.log(accounts.accounts)}
+      {console.log(accounts)}
       <h1>Here are my accounts</h1>
+      {accounts.accounts.map(nam=>(
+        <h1>{nam.name}</h1>
+      ))}
       
     </div>
   );

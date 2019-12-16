@@ -1,15 +1,5 @@
 -- Database Queries
 
-Tablenames	Records
-Customers	91
-Categories	8
-Employees	10
-OrderDetails	518
-Orders	196
-Products	77
-Shippers	3
-Suppliers	29
-
 -- Find all customers with postal code 1010
 
 select * 

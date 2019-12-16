@@ -18,13 +18,19 @@ export const loadAccounts = ()=>{
 }
 
 
-export const InitalAccounts = (dispatch)=>{
+export const InitalAccounts = ()=>{
 
-    loadAccounts()
+    return function(dispatch){
 
-    return axios.get("http://localhost:4000/accounts")
-    .then((res)=>{
-        got(res)
-    })
+        
+        dispatch(loadAccounts());
+        
+        return axios.get("http://localhost:4000/accounts")
+        .then((res)=>{
+            let yeet = res.data.accs
+            dispatch(got(yeet))
+            console.log("from action", yeet)
+        })
+    }
 }
 
