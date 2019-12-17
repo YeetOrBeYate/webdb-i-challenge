@@ -7,6 +7,20 @@ body{
   color: ivory;
 }
 
+.Card{
+  width: 50%;
+  margin: 2% auto;
+  border:1px solid ivory;
+}
+
+.EditName{
+display: none;
+}
+
+.EditBudget{
+display: none;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

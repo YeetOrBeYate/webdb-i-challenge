@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {InitalAccounts} from "./Actions/Actions"
-
+import Card from './Components/Card';
 
 import './App.css';
 
@@ -27,9 +27,10 @@ function App() {
       {console.log(accounts)}
       <h1>Here are my accounts</h1>
       {accounts.accounts.map(nam=>(
-        <h1>{nam.name}</h1>
-      ))}
-      
+        <div>
+          <Card name={nam.name} budget = {nam.budget}/>
+        </div>
+        ))}
     </div>
   );
 }
