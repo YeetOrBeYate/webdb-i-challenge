@@ -13,13 +13,20 @@ body{
   border:1px solid ivory;
 }
 
-.EditName{
-display: none;
+.title{
+  width: 20%;
+  margin: 0 auto;
+  display: flex;
 }
 
-.EditBudget{
-display: none;
+
+.Yeet{
+  display: none;
 }
+.ShowForm{
+  display: block;
+}
+
 
 .App-logo {
   height: 40vmin;

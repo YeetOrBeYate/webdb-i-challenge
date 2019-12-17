@@ -26,9 +26,9 @@ function App() {
     <div className="App">
       {console.log(accounts)}
       <h1>Here are my accounts</h1>
-      {accounts.accounts.map(nam=>(
+      {accounts.accounts.map((nam)=>(
         <div>
-          <Card name={nam.name} budget = {nam.budget}/>
+          <Card name={nam.name} budget = {nam.budget} id = {nam.id}/>
         </div>
         ))}
     </div>
