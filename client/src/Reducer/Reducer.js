@@ -5,6 +5,7 @@ const account={
     accounts:[]
 }
 
+
 export const AccountReducer = (state = account, action)=>{
    switch(action.type){
     case 'loading':
@@ -13,6 +14,8 @@ export const AccountReducer = (state = account, action)=>{
         return {...state, accounts: action.payload, loading: false}
     case "got":
         return {...state, accounts: action.payload, loading:false}
+    // case "edit":
+    //     return{...state, accounts: replace(action.payload), loading:false}
     default:
         return state
    }

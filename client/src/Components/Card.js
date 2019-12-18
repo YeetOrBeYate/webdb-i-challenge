@@ -1,6 +1,11 @@
 import React from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {editTheName} from "../Actions/Actions";
 
 const Card = (props)=>{
+
+    const state = useSelector(state=>state);
+    const dispatch = useDispatch();
 
     const id = props.id;
     const name = props.name;
@@ -15,12 +20,12 @@ const Card = (props)=>{
 
     const changeName = (e)=>{
         setName({...nameObject, name: e.target.value})
-        console.log(nameObject);
+        
     }
 
     const changeBudget = (e)=>{
         setBudget({...budgetObject, budget: e.target.value})
-        console.log(budgetObject);
+        
     }
 
     const toggleName = ()=>{
@@ -29,6 +34,22 @@ const Card = (props)=>{
 
     const toggleBudget = ()=>{
         document.querySelector(`.EditBudget-${id}`).classList.toggle("ShowForm")
+    }
+
+    const sendName = (e)=>{
+        e.preventDefault();
+        dispatch(editTheName(id, nameObject))
+        console.log("from the card",state.accounts)
+
+         state.accounts = state.accounts.map(acc=>{
+                    if(acc.id === id){
+                        return {...acc, name:nameObject.name}
+                    }else{
+                        return acc;
+                    }
+                })
+        console.log("from after the thing", state.accounts)
+
     }
 
     return(
@@ -42,7 +63,7 @@ const Card = (props)=>{
                 <label>Name</label>
                 <input type="text" value={nameObject.name} onChange={changeName}></input>
             </div>
-            <button type="submit">Edit Name</button>
+            <button type="submit" onClick={(e)=>sendName(e)}>Edit Name</button>
         </form>
 
         <div className = 'title'>

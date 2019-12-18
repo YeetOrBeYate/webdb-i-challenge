@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {useDispatch} from "react-redux"
+
 
 
 
@@ -17,6 +17,10 @@ export const loadAccounts = ()=>{
     return { type: "loading"}
 }
 
+export const editName = (data)=>{
+    return{ type: "edit", payload:data}
+}
+
 
 export const InitalAccounts = ()=>{
 
@@ -31,6 +35,22 @@ export const InitalAccounts = ()=>{
             dispatch(got(yeet))
             console.log("from action", yeet)
         })
+    }
+}
+
+export const editTheName = (id,object)=>{
+
+    return function(dispatch){
+
+        // dispatch(loadAccounts());
+
+        return axios.put(`http://localhost:4000/accounts/${id}`, object)
+        .then(res=>{
+            let yate = res.data.account
+            console.log(yate);
+        // dispatch(editName(yate))            
+        })
+
     }
 }
 
