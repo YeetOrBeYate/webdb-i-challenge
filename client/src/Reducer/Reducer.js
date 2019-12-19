@@ -16,6 +16,8 @@ export const AccountReducer = (state = account, action)=>{
         return {...state, accounts: action.payload, loading:false}
     // case "edit":
     //     return{...state, accounts: replace(action.payload), loading:false}
+    case "editState":
+        return {...state, accounts:action.payload, loading:false}
     default:
         return state
    }

@@ -7,14 +7,16 @@ import './App.css';
 
 function App() {
 
-  const accounts = useSelector(state=>state);
+  const state = useSelector(state=>state);
   const dispatch = useDispatch();
 
+  //basically using this for component did mount
   React.useEffect(()=>{
    dispatch(InitalAccounts());
   },[])
 
-  if(accounts.loading===true){
+  
+  if(state.loading===true){
     return(
       <div>
         <h1>Loading...</h1>
@@ -22,11 +24,12 @@ function App() {
     );
   }
 
+
   return (
     <div className="App">
-      {console.log(accounts)}
+      {console.log(state)}
       <h1>Here are my accounts</h1>
-      {accounts.accounts.map((nam)=>(
+      {state.accounts.map((nam)=>(
         <div>
           <Card name={nam.name} budget = {nam.budget} id = {nam.id}/>
         </div>
@@ -34,5 +37,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

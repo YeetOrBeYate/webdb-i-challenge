@@ -21,6 +21,10 @@ export const editName = (data)=>{
     return{ type: "edit", payload:data}
 }
 
+export const editState = (data)=>{
+    return{type: "editState", payload: data}
+}
+
 
 export const InitalAccounts = ()=>{
 
@@ -51,6 +55,14 @@ export const editTheName = (id,object)=>{
         // dispatch(editName(yate))            
         })
 
+    }
+}
+
+export const editTheState = (array)=>{
+
+    return function(dispatch){
+
+        dispatch(editState(array));
     }
 }
 

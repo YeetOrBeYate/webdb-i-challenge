@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {editTheName} from "../Actions/Actions";
+import {editTheName, editTheState} from "../Actions/Actions";
 
 const Card = (props)=>{
 
     const state = useSelector(state=>state);
     const dispatch = useDispatch();
-
+    
+    
     const id = props.id;
     const name = props.name;
     const budget = props.budget;
@@ -39,23 +40,29 @@ const Card = (props)=>{
     const sendName = (e)=>{
         e.preventDefault();
         dispatch(editTheName(id, nameObject))
-        console.log("from the card",state.accounts)
+        console.log("from the card BEFORE",state)
+        console.log("before",props)
 
-         state.accounts = state.accounts.map(acc=>{
+         const newState = state.accounts.map(acc=>{
                     if(acc.id === id){
                         return {...acc, name:nameObject.name}
                     }else{
                         return acc;
                     }
                 })
-        console.log("from after the thing", state.accounts)
+        dispatch(editTheState(newState));
+
+        console.log("after",props)
+        console.log("form the card AFTER", state)
+
 
     }
+
 
     return(
     <div className="Card">
         <div className = 'title'>
-            <h2>{props.name}</h2><div onClick={toggleName}>Edit</div>
+            <h2>{name}</h2><div onClick={toggleName}>Edit</div>
         </div>
 
         <form className = {"Yeet EditName-"+id }>
@@ -67,7 +74,7 @@ const Card = (props)=>{
         </form>
 
         <div className = 'title'>
-            <h2>{props.budget}</h2> <div onClick={toggleBudget}>Edit</div>
+            <h2>{budget}</h2> <div onClick={toggleBudget}>Edit</div>
         </div>
         <form className = {"Yeet EditBudget-"+id}>
             <div>
