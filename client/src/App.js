@@ -27,7 +27,6 @@ function App() {
 
   return (
     <div className="App">
-      {console.log(state)}
       <h1>Here are my accounts</h1>
       {state.accounts.map((nam)=>(
         <div>

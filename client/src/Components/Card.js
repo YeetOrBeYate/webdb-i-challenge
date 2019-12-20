@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {editTheName, editTheState} from "../Actions/Actions";
+import {editTheAccount, editTheState} from "../Actions/Actions";
 
 const Card = (props)=>{
 
@@ -39,9 +39,7 @@ const Card = (props)=>{
 
     const sendName = (e)=>{
         e.preventDefault();
-        dispatch(editTheName(id, nameObject))
-        console.log("from the card BEFORE",state)
-        console.log("before",props)
+        dispatch(editTheAccount(id, nameObject))
 
          const newState = state.accounts.map(acc=>{
                     if(acc.id === id){
@@ -52,10 +50,20 @@ const Card = (props)=>{
                 })
         dispatch(editTheState(newState));
 
-        console.log("after",props)
-        console.log("form the card AFTER", state)
+    }
 
+    const sendBudget = (e)=>{
+        e.preventDefault();
+        dispatch(editTheAccount(id, budgetObject))
 
+        const newState = state.accounts.map(acc=>{
+            if(acc.id === id){
+                return {...acc, budget:budgetObject.budget}
+            }else{
+                return acc;
+            }
+        })
+    dispatch(editTheState(newState));
     }
 
 
@@ -81,7 +89,7 @@ const Card = (props)=>{
                 <label>Budget</label>
                 <input type="text" value={budgetObject.budget} onChange={changeBudget}></input>
             </div>
-            <button type="submit">Edit Budget</button>
+            <button type="submit" onClick={(e)=>sendBudget(e)}>Edit Budget</button>
         </form>
     </div>);
 }

@@ -42,7 +42,7 @@ export const InitalAccounts = ()=>{
     }
 }
 
-export const editTheName = (id,object)=>{
+export const editTheAccount = (id,object)=>{
 
     return function(dispatch){
 
@@ -51,7 +51,7 @@ export const editTheName = (id,object)=>{
         return axios.put(`http://localhost:4000/accounts/${id}`, object)
         .then(res=>{
             let yate = res.data.account
-            console.log(yate);
+            console.log('response from put', res);
         // dispatch(editName(yate))            
         })
 
