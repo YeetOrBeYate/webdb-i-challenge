@@ -2,6 +2,8 @@ const express = require('express');
 const Queries = require("../data/Queries/Queries.js")
 const router = express.Router();
 
+const middle = require("../middle/restrict.js");
+
 router.get("/", (req,res)=>{
     Queries.getAll()
     .then(accs=>{
@@ -37,7 +39,7 @@ router.post("/", (req,res)=>{
     })
 })
 
-router.put("/:id", (req,res)=>{
+router.put("/:id", middle.restrictBudget, (req,res)=>{
     const body = req.body;
     const id = req.params.id;
     Queries.EditAccount(id,body)
@@ -45,7 +47,7 @@ router.put("/:id", (req,res)=>{
         res.status(201).json({account})
     })
     .catch((err)=>{
-        res.status(500).json({err})
+        res.status(505).json({err})
     })
 
 

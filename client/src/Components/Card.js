@@ -54,6 +54,10 @@ const Card = (props)=>{
 
     const sendBudget = (e)=>{
         e.preventDefault();
+        console.log(budgetObject)
+        if(typeof budgetObject.budget === "string"){
+            budgetObject.budget = Number(budgetObject.budget)
+        }
         dispatch(editTheAccount(id, budgetObject))
 
         const newState = state.accounts.map(acc=>{
